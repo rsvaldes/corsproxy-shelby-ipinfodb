@@ -14,7 +14,7 @@ app.use(function(req, res, next) {
 
 app.use('/', function(req, res) {
   let key = (req.url.indexOf('?') !== -1) ? '&' : '?';
-  key += 'key=<' + process.env.key + '>';
+  key += 'key=' + process.env.key;
 
   let url = apiServerHost + req.url + key;
 
