@@ -13,7 +13,11 @@ app.use(function(req, res, next) {
 });
 
 app.use('/', function(req, res) {
-  var url = apiServerHost + req.url;
+  let key = (req.url.indexOf('?') !== -1) ? '&' : '?';
+  key += 'key=' + process.env.key;
+
+  let url = apiServerHost + req.url + key;
+
   req.pipe(request(url)).pipe(res);
 });
 
